@@ -73,10 +73,7 @@ https://templatemo.com/tm-559-zay-shop
                 <a class="nav-link" href="pendftaran.php">Pendaftaran Siswa Baru</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="about.php">About</a>
               </li>
             </ul>
           </div>
@@ -196,6 +193,7 @@ https://templatemo.com/tm-559-zay-shop
           <div class="row pt-2">
             <div class="col-12">
               <p class="text-left text-light">Copyright &copy; 2021 MA Alfatah Ambon | Wia</p>
+              <h6 class="text-white font-monospace">JL.SULTAN BABULLAH NO.1.KOMPLEKS MESJID RAYA AMBON. KELURAHAN HUNIPOPU KEC. SIRIMAU 97128</h6>
             </div>
           </div>
         </div>
