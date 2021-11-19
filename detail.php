@@ -1,6 +1,25 @@
+<?php 
+//koneksi data base yang beraada di file koneksi
+require 'koneksi.php';
+//munculkan data base dengan fungsion yang ad di file koneksi
+$daftar = query("SELECT * FROM tb_pendaftaran ORDER BY id DESC");
+
+//$daftar = query("SELECT * FROM tb_pendaftaran ORDER BY id ASC");
+// ACS itu megurutkan dari id yang kecil sampai ke besar
+//$daftar = query("SELECT * FROM tb_pendaftaran ORDER BY id DESC");
+// DESC itu mengurutkan dari yang besar ke kecil
+
+//tombol cari
+if( isset($_POST["submit"]) ){
+  $daftar = cari ($_POST["keyword"]);
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>MA Alfatah Ambon</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,13 +34,7 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap" />
     <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
-    <!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
   </head>
 
   <body>
@@ -62,14 +75,6 @@ https://templatemo.com/tm-559-zay-shop
         <div class="w-100 pt-1 mb-5 text-right">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="" method="get" class="modal-content modal-body border-0 p-0">
-          <div class="input-group mb-2">
-            <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ..." />
-            <button type="submit" class="input-group-text bg-success text-light">
-              <i class="fa fa-fw fa-search text-white"></i>
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
@@ -78,24 +83,67 @@ https://templatemo.com/tm-559-zay-shop
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="container">
-            <div class="row p-5">
-              <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                <img class="img-fluid" src="./assets/img/15.jpg" alt="" />
+            <div class="row p-5 ">
+              <a class="btn btn-success" href="pendftaran.php">Kembali</a>
+              <!-- tombol cari -->
+              <form class="row g-3" action="" method="POST">
+              <div class="col-auto">
+                <input type="text" name="keyword" class="form-control" placeholder="search...." autocomplete="off" autofocus>
               </div>
-              <div class="col-lg-6 mb-0 d-flex align-items-center">
-                <div class="text-align-left align-self-center">
-                  <h1 class="h1 text-success"><b>MA Alfatah Ambon</b></h1>
-                  <br />
-                  <h3 class="h2"><strong> VISI DAN MISI MA Alfatah Ambon</strong></h3>
-                  <p>VISI : Terwujud Madrasah yang berkualitas, Disiplin, Akhlakul, karimah, Partisipatif iman dan Taqwa.</p>
-                  <p>
-                    MISI : <br />
-                    1. Melaksanakan Kegiatan Belajar Mengajar Berbasis imtaq dan iptek. <br />2.Melaksanakam Program tertib ibadah, tertib belajar mengajar dan administrasi. <br />3. Melaksanakan integrasi akhlakul karimah ke dalam mata
-                    pelajaran. <br />4. Mengoptimalkan peran serta masyarakat, stake holder, instansi terkait dalam mendukung kegiatan madrasah
-                  </p>
+              <div class="col-auto">
+                <button type="submit" name="submit" class="btn btn-success mb-3">Submit</button>
+              </div>
+            </form>
+            <!-- akir tombol cari -->
+<!-- tabel -->
+    <table class="table table-secondary table-bordered caption-top text-center ">
+    <caption >
+        <h1 style="color:green;"><strong><i style="color:green;" class="bi bi-journal-check"></i>Tabel Pendaftaran</strong></h1>
+    </caption> 
+    <thead>
+        <tr>
+          <th scope="col">NO</th>
+          <th scope="col">NAMA</th>
+          <th scope="col">Jenis Kelamin</th>
+          <th scope="col">Tahun Ajaran</th>
+          <th scope="col">Tempat Lahir</th>
+          <th scope="col">Tanggal Lahir</th>
+          <th scope="col">Asal Sekolah</th>
+          <th scope="col">agama</th>
+          <th scope="col">Alamat</th>
+          <th scope="col">up akte</th>
+          <!-- <th scope="col">up kk</th> -->
+          <th scope="col">aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+          <?php $i = 1; ?>
+          <?php foreach( $daftar as $row ) : ?>
+        <tr>
+            <th><?= $i; ?></th>
+            <td><?= $row ["nama"]; ?></td>
+            <td><?= $row ["jenisk"]; ?></td>
+            <td><?= $row["tajaran"]; ?></td>
+            <td><?= $row["asekolah"]; ?></td>
+            <td><?= $row["tlahir"]; ?></td>
+            <td><?= $row["tglahir"]; ?></td>
+            <td><?= $row["agama"]; ?></td>
+            <!-- pemaggilan untuk gambar -->
+            <td><img src="img/<?= $row["upakte"]; ?>"widht="50"></td>
+            <!-- <td><img src="img/<?= $row["upakk"]; ?>"widht="50"></td> -->
+            <td><?= $row["alengkap"]; ?></td>
+            <td>
+                <a href="detail.php" ><i style="color:green;" class="bi bi-card-text"></i></a>
+                <a href="ubah.php?id=<?= $row["id"]; ?>"><i style="color:green;" class="bi bi-pencil-square"></i></a>
+                <a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Yakin Dihapus Datanya?');"><i style="color:red;" class="bi bi-trash2-fill"></i></a>
+          </td>
+        </tr>
+        <?php $i++; ?>
+    <?php endforeach; ?>
+      </tbody>
+    </table>
+    <!-- tabel -->
                 </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

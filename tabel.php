@@ -111,6 +111,8 @@ if( isset($_POST["submit"]) ){
           <th scope="col">Asal Sekolah</th>
           <th scope="col">agama</th>
           <th scope="col">Alamat</th>
+          <th scope="col">up akte</th>
+          <th scope="col">up kk</th>
           <th scope="col">aksi</th>
         </tr>
       </thead>
@@ -122,13 +124,15 @@ if( isset($_POST["submit"]) ){
             <td><?= $row ["nama"]; ?></td>
             <td><?= $row ["jenisk"]; ?></td>
             <td><?= $row["tajaran"]; ?></td>
-            <td><?= $row["asekolah"]; ?></td>
             <td><?= $row["tlahir"]; ?></td>
             <td><?= $row["tglahir"]; ?></td>
+            <td><?= $row["asekolah"]; ?></td>
             <td><?= $row["agama"]; ?></td>
             <td><?= $row["alengkap"]; ?></td>
+            <!-- pemaggilan untuk gambar -->
+            <td><img src="img/<?= $row["upakte"]; ?>" width="50"></td>
+            <td><img src="img/<?= $row["upkk"]; ?>" width="50"></td>
             <td>
-                <a href="detail.php" ><i style="color:green;" class="bi bi-card-text"></i></a>
                 <a href="ubah.php?id=<?= $row["id"]; ?>"><i style="color:green;" class="bi bi-pencil-square"></i></a>
                 <a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Yakin Dihapus Datanya?');"><i style="color:red;" class="bi bi-trash2-fill"></i></a>
           </td>

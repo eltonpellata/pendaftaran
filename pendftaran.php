@@ -110,10 +110,11 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row p-5">
               <div class="col-lg-13 mb-0 d-flex align-items-center">
                 <div class="text-align-left align-self-center">
-                  <form class="row g-3" action="" method="POST">
+                  <!-- tambah data -->
+                  <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
                     <div class="col-md-6">
                       <label for="inputEmail4" class="form-label">Nama Lengkap</label>
-                      <input type="text" name="nama" class="form-control" id="inputEmail4" required >
+                      <input type="text" name="nama" class="form-control" id="inputEmail4" autocomplete="off" autofocus required >
                     </div>
                     <div class="col-md-6">
                       <label for="inputState" class="form-label">Jenis Kelamin</label>
@@ -137,11 +138,11 @@ https://templatemo.com/tm-559-zay-shop
                     </div>
                     <div class="col-md-6">
                       <label for="Asal Sekolah" class="form-label">Asal Sekolah</label>
-                      <input type="text" name="asekolah" class="form-control" id="Asal Sekolah" required >
+                      <input type="text" name="asekolah" class="form-control" id="Asal Sekolah" autocomplete="off" placeholder="Asal Sekolah..." required >
                     </div>
                     <div class="col-md-6">
                       <label for="Tempat Lahir" class="form-label">Tempat Lahir</label>
-                      <input type="text" name="tlahir" class="form-control" id="Tempat Lahir" required >
+                      <input type="text" name="tlahir" class="form-control" id="Tempat Lahir" autocomplete="off" placeholder="Tempat Lahir..." required >
                     </div>
                     <div class="col-md-6">
                       <label for="Tanggal Lahir" class="form-label">Tanggal Lahir</label>
@@ -165,7 +166,7 @@ https://templatemo.com/tm-559-zay-shop
                     </div> -->
                     <div class="col-md-6">
                       <label for="Alamat Lengkap" class="form-label">Alamat Lengkap</label>
-                      <input type="text" name="alengkap" class="form-control" id="Alamat Lengkap" required >
+                      <input type="text" name="alengkap" class="form-control" id="Alamat Lengkap" autocomplete="off" placeholder="Alamat Lengkap..." required >
                     </div>
                     <div class="col-md-6">
                       <label for="Up Akte" class="form-label">Up Akte</label>
